@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem              1.0
+PortGroup               python 1.0
+PortGroup               github 1.0
+
+name                    py-munkres
+categories-append       math
+license                 Apache-2
+platforms               darwin
+maintainers             {@5nefarious gmail.com:arvin.ignaci} openmaintainer
+
+description             Munkres implementation for Python
+long_description        Provides an O(n^3) implementation of the Munkres algorithm (also called the Hungarian algorithm or the Kuhn-Munkres algorithm).
+homepage                http://software.clapper.org/munkres
+
+github.setup            bmc munkres 1.1.4 release-
+checksums               rmd160  452525c9bb5eb4929a804d0cfa015728e8517a4e \
+                        sha256  a0eb473ebf61f096ef27c2ba04d9f4a78acb7b4294861028ff0e92e5aaef6144 \
+                        size    13771
+
+python.versions         35 36 37 38 39
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+}
